@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Menu, Search, User } from 'react-feather';
+import React from "react";
+import styled from "styled-components/macro";
+import { Menu, Search, User } from "react-feather";
 
-import { QUERIES } from '../../constants';
+import { FAMILIES, QUERIES } from "../../constants";
 
-import MaxWidthWrapper from '../MaxWidthWrapper';
-import Logo from '../Logo';
-import Button from '../Button';
+import MaxWidthWrapper from "../MaxWidthWrapper";
+import Logo from "../Logo";
+import Button from "../Button";
 
 const Header = () => {
   return (
@@ -28,9 +28,27 @@ const Header = () => {
           </ActionGroup>
         </Row>
       </SuperHeader>
-      <MainHeader>
-        <Logo />
-      </MainHeader>
+      <DesktopHeader>
+        <Row>
+          <ActionGroup>
+            <button>
+              <Search size={24} />
+            </button>
+            <button>
+              <Menu size={24} />
+            </button>
+          </ActionGroup>
+          <MainHeader>
+            <Logo />
+          </MainHeader>
+          <VerticalActionGroup>
+            <SubscribeButtonWrapper>
+              <SubscribeButton>SUBSCRIBE</SubscribeButton>
+            </SubscribeButtonWrapper>
+            <SubscriberLink>Already a subscriber?</SubscriberLink>
+          </VerticalActionGroup>
+        </Row>
+      </DesktopHeader>
     </header>
   );
 };
@@ -39,6 +57,10 @@ const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: none;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -65,6 +87,50 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+`;
+
+/* Desktop layout */
+
+const DesktopHeader = styled.div`
+  display: none;
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: revert;
+    color: var(--color-gray-900);
+    margin-top: 16px;
+    margin-bottom: 72px;
+  }
+`;
+
+const VerticalActionGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+
+const SubscribeButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: ${11 / 16}rem ${24 / 16}rem;
+  background-color: var(--color-primary);
+  color: hsla(0, 0%, 100%, 1);
+  border-radius: 4px;
+`;
+
+const SubscribeButton = styled.button`
+  font-family: var(--font-family-sans-serif);
+  font-weight: var(--font-weight-bold);
+  font-size: 1rem;
+`;
+
+const SubscriberLink = styled.a`
+  font-style: italic;
+  font-weight: var(--font-weight-normal);
+  font-size: ${14 / 16}rem;
+  text-decoration: underline;
 `;
 
 export default Header;
