@@ -28,26 +28,27 @@ const Header = () => {
           </ActionGroup>
         </Row>
       </SuperHeader>
+      <MainHeader>
+        <Logo />
+      </MainHeader>
       <DesktopHeader>
-        <Row>
-          <ActionGroup>
-            <button>
-              <Search size={24} />
-            </button>
-            <button>
-              <Menu size={24} />
-            </button>
-          </ActionGroup>
-          <MainHeader>
-            <Logo />
-          </MainHeader>
-          <VerticalActionGroup>
-            <SubscribeButtonWrapper>
-              <SubscribeButton>SUBSCRIBE</SubscribeButton>
-            </SubscribeButtonWrapper>
-            <SubscriberLink>Already a subscriber?</SubscriberLink>
-          </VerticalActionGroup>
-        </Row>
+        <ActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </ActionGroup>
+
+        <Logo />
+
+        <VerticalActionGroup>
+          <SubscribeButtonWrapper>
+            <SubscribeButton>SUBSCRIBE</SubscribeButton>
+          </SubscribeButtonWrapper>
+          <SubscriberLink>Already a subscriber?</SubscriberLink>
+        </VerticalActionGroup>
       </DesktopHeader>
     </header>
   );
@@ -87,15 +88,21 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: none;
+  }
 `;
 
 /* Desktop layout */
 
-const DesktopHeader = styled.div`
+const DesktopHeader = styled(MaxWidthWrapper)`
   display: none;
 
   @media (${QUERIES.laptopAndUp}) {
-    display: revert;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
     color: var(--color-gray-900);
     margin-top: 16px;
     margin-bottom: 72px;
@@ -108,6 +115,7 @@ const VerticalActionGroup = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+  justify-self: end;
 `;
 
 const SubscribeButtonWrapper = styled.div`
