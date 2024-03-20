@@ -21,14 +21,7 @@ const Wrapper = styled.article`
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
-
   color: var(--color-gray-900);
-
-  &:last-of-type {
-    border-bottom: 1px solid var(--color-gray-300);
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-  }
 
   @media (${QUERIES.tabletAndUp} and ${QUERIES.laptopAndUp}) {
     display: revert;

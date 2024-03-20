@@ -21,12 +21,6 @@ const Wrapper = styled.article`
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
-
-  &:not(:last-of-type) {
-    border-bottom: 1px solid var(--color-gray-300);
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-  }
 `;
 
 const Image = styled.img`

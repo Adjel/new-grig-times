@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { QUERIES } from "../../constants";
 
-const webkitLineClampValue = "3";
+const webkitLineClampValue = "8";
 
 const MainStory = ({ id, title, image, location, abstract, ...delegated }) => {
   return (
@@ -41,16 +41,17 @@ const Abstract = styled.p`
   margin-bottom: 1em;
   white-space: pre-wrap;
 
+  display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: ${webkitLineClampValue};
   overflow: hidden;
 
   @media (${QUERIES.tabletAndUp}) {
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: calc(${webkitLineClampValue} * 2);
   }
 
   @media (${QUERIES.laptopAndUp}) {
-    -webkit-line-clamp: 9;
+    -webkit-line-clamp: calc(${webkitLineClampValue} * 3);
   }
 `;
 
