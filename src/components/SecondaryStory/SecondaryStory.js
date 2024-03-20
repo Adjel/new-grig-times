@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
+
+const webkitLineClampValue = "3";
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
@@ -42,9 +45,15 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  align-self: start;
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: ${webkitLineClampValue};
+  overflow: hidden;
 `;
 
 export default SecondaryStory;
