@@ -47,11 +47,11 @@ const Abstract = styled.p`
   overflow: hidden;
 
   @media (${QUERIES.tabletAndUp}) {
-    -webkit-line-clamp: calc(${webkitLineClampValue} * 2);
+    -webkit-line-clamp: 14;
   }
 
   @media (${QUERIES.laptopAndUp}) {
-    -webkit-line-clamp: calc(${webkitLineClampValue} * 3);
+    -webkit-line-clamp: ${webkitLineClampValue};
   }
 `;
 
