@@ -42,6 +42,8 @@ const MainStoryGrid = () => {
         </OpinionList>
       </OpinionSection>
 
+      <Divider3 />
+
       <AdvertisementSection>
         <Advertisement />
       </AdvertisementSection>
@@ -70,9 +72,10 @@ const Wrapper = styled.div`
   }
 
   @media (${QUERIES.laptopAndUp}) {
-    grid-template-columns: 1.7fr 1px 1fr 1px 0.7fr;
+    grid-template-columns: 5.5fr 1px 4fr 1px 3fr;
     grid-template-areas:
       "main-story divider secondary-stories divider2 opinion-stories"
+      "main-story divider divider3 divider3 divider3"
       "main-story divider advertisement advertisement advertisement";
 
     gap: 16px;
@@ -101,6 +104,15 @@ const Divider2 = styled.div`
   }
 `;
 
+const Divider3 = styled.div`
+  display: none;
+  @media (${QUERIES.laptopAndUp}) {
+    display: revert;
+    grid-area: divider3;
+    border-bottom: 1px solid var(--color-gray-300);
+  }
+`;
+
 const MainStorySection = styled.section`
   grid-area: main-story;
 `;
@@ -126,6 +138,8 @@ const OpinionList = styled.div`
 
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+
+  margin-top: -8px;
 `;
 
 const AdvertisementSection = styled.section`
