@@ -40,7 +40,9 @@ const SpecialtyStoryGrid = () => {
         </SectionTitle>
         <SportsStories>
           {SPORTS_STORIES.map((data) => (
-            <MiniStory key={data.id} {...data} />
+            <MiniSportStoryWrapper key={data.id}>
+              <MiniStory {...data} />
+            </MiniSportStoryWrapper>
           ))}
         </SportsStories>
       </SportsSection>
@@ -52,6 +54,10 @@ const Wrapper = styled.div`
   display: grid;
   gap: 48px;
 
+  @media (${QUERIES.tabletAndUp}) {
+    grid-template-columns: 100%;
+    gap: 64px;
+  }
   @media (${QUERIES.laptopAndUp}) {
     grid-template-columns: 1fr 1px 1fr;
     grid-template-areas: "market divider sport";
@@ -70,36 +76,43 @@ const Divider = styled.div`
   }
 `;
 
-const MarketsSection = styled.section``;
-
-const MarketCards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-
-  @media (${QUERIES.tabletAndUp}) {
-    grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
-  }
-
+const MarketsSection = styled.section`
   @media (${QUERIES.laptopAndUp}) {
     grid-area: "market";
   }
 `;
 
+const MarketCards = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (${QUERIES.tabletAndUp}) {
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  }
+`;
+
 const SportsSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+  @media (${QUERIES.tabletAndUp}) {
+    overflow: auto;
+  }
+`;
+
+const MiniSportStoryWrapper = styled.div`
+  @media (${QUERIES.tabletAndUp}) {
+    min-width: 220px;
+  }
 `;
 
 const SportsStories = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
 
   @media (${QUERIES.tabletAndUp}) {
     display: flex;
-    max-width: 100%;
+    overflow: auto;
+    grid-template-columns: revert;
   }
 
   @media (${QUERIES.laptopAndUp}) {
